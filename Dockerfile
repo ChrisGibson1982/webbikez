@@ -1,17 +1,19 @@
 #
-#  docker build -t cgfootman/webbikez -f Dockerfile .
-#  docker run -d -p 8080:80 --name webbikez cgfootman/webbikez:latest 
-#  docker push cgfootman/webbikez
+#  docker build -t cgfootman/webbikez:1.0.2 -f Dockerfile .
+#  docker run -d -p 8080:80 --name webbikez cgfootman/webbikez
+#  docker push cgfootman/webbikez:1.0.2 
 
 
 FROM centos:latest
 LABEL maintainer="cgfootman@hotmail.com" 
+LABEL version="1.0.2"
 
 EXPOSE 80
 
 RUN yum -y install epel-release && \
     yum -y install nginx git logrotate && \
-    yum clean all 
+    yum clean all && rm -rf /var/cache/yum
+
 
 ADD nginx/global.conf /etc/nginx/conf.d/ 
 ADD nginx/nginx.conf /etc/nginx/nginx.conf 
