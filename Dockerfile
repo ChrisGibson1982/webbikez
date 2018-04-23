@@ -1,12 +1,12 @@
 #
-#  docker build -t cgfootman/webbikez:1.0.2 -f Dockerfile .
+#  docker build -t cgfootman/webbikez:1.0.3 -f Dockerfile .
 #  docker run -d -p 8080:80 --name webbikez cgfootman/webbikez
-#  docker push cgfootman/webbikez:1.0.2 
+#  docker push cgfootman/webbikez:1.0.3 
 
 
 FROM centos:latest
 LABEL maintainer="cgfootman@hotmail.com" 
-LABEL version="1.0.2"
+LABEL version="1.0.3"
 
 EXPOSE 80
 
