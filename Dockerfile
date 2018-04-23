@@ -1,5 +1,5 @@
 #
-#  docker build -t cgfootman/webbikez:1.0.6 -t cgfootman/webbikez:latest  -f Dockerfile .
+#  docker build -t cgfootman/webbikez:1.0.7 -t cgfootman/webbikez:latest  -f Dockerfile .
 #  docker run -d -p 8080:80 --name webbikez cgfootman/webbikez
 #  docker push cgfootman/webbikez
 
