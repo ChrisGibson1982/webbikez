@@ -7,25 +7,67 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+<style>
+    .black-text {
+      color: black;
+    }
+  
+    h1 {
+      font-family: Lobster, Monospace;
+    
+    }
+  
+    p {
+      font-size: 16px;
+      font-family: Monospace;
+    }
+  
+    .container {
+  position: relative;
+    
+}
+
+.image {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
+  width: 100%;
+  opacity: 0;
+  transition: .5s ease;
+  background-color: #008CBA;
+}
+
+.container:hover .overlay {
+  opacity: 1;
+}
+
+.text {
+  color: white;
+  font-size: 20px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+  </style>
+
 </head>
 <body>
 <link href="https://fonts.googleapis.com/css?family=Rubik Mono One" rel="stylesheet" type="text/css">
-<style>
-  .black-text {
-    color: black;
-  }
 
-  h1 {
-    font-family: Lobster, Monospace;
-  
-  }
-
-  p {
-    font-size: 16px;
-    font-family: Monospace;
-  }
-
-</style>
 
 <div class="jumbotron text-center">
     <a href="#"><img class="img-responsive center-block img-rounded" alt="WebBikez Online Shop" src="./Images/WebBikez_logo.jpg"></a>
@@ -33,27 +75,43 @@
 
 <div class="container"></div>
 <div class="row">
-    <div class="col-xs-3 col-sm-3 col-lg-3">
-        <a href="BicyclePhotoLibrary/BicyclePhoto_Default.html">
-            <img class="img-responsive img-rounded" alt="Photo Library" src="./Images/menubar/retro_ride_on_pier.jpeg">
-        </a>
+    <div class="container col-xs-3 col-sm-3 col-lg-3">       
+            <a href="BicyclePhotoLibrary/BicyclePhoto_Default.html">
+                <img src="./Images/menubar/retro_ride_on_pier.jpeg" alt="Photo Library" class="image img-responsive img-rounded">
+                <div class="overlay">
+                    <div class="text">Photo Library</div>
+                </div> 
+            </a>       
     </div>
-    <div class="col-xs-3 col-sm-3 col-lg-3">
-        <a href="AssemblyInstructions/Assembly_Default.html">
-            <img class="img-responsive img-rounded" alt="Assembly Instructions" src="./Images/menubar/blue_back_wheel.jpeg">
-        </a>
+    <div class="container col-xs-3 col-sm-3 col-lg-3">       
+            <a href="AssemblyInstructions/Assembly_Default.html">
+                <img src="./Images/menubar/blue_back_wheel.jpeg" alt="Assembly Instructions" class="image img-responsive img-rounded">
+                <div class="overlay">
+                    <div class="text">Assembly Instructions</div>
+                </div> 
+            </a>       
     </div>
-    <div class="col-xs-3 col-sm-3 col-lg-3">
-        <a href="StoreFront/StoreFront_Default.html">
-            <img class="img-responsive img-rounded" alt="The Store" src="./Images/menubar/web_shop.jpeg">
-        </a>
+    <div class="container col-xs-3 col-sm-3 col-lg-3">       
+            <a href="StoreFront/StoreFront_Default.html">
+                <img src="./Images/menubar/web_shop.jpeg" alt="The Store" class="image img-responsive img-rounded">
+                <div class="overlay">
+                    <div class="text">The Store</div>
+                </div> 
+            </a>       
     </div>
-    <div class="col-xs-3 col-sm-3 col-lg-3">
-            <a href="Static/RackMan.htm">
-                <img class="img-responsive img-rounded" alt="Contact Us" src="./Images/menubar/social_media.jpeg">
-            </a>
+    <div class="container col-xs-3 col-sm-3 col-lg-3">       
+                <a href="ContactUs/ContactUs_Default.html">
+                    <img src="./Images/menubar/social_media.jpeg" alt="Contact Us" class="image img-responsive img-rounded">
+                    <div class="overlay">
+                        <div class="text">Contact Us</div>
+                    </div> 
+                </a>       
     </div>
 </div>
+
+
+
+
 <br>
 <br>
 <div class="jumbotron text-center">
