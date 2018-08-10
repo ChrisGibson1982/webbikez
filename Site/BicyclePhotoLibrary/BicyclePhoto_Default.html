@@ -1,132 +1,141 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <title>WebBikez Online Shop - Bicycle Photo Library</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
-<style>
+<head>
+
+  <title>WebBikez Online Shop - Bicycle Photo Library</title>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+  <style>
     .black-text {
       color: black;
     }
-  
+
     h1 {
       font-family: Lobster, Monospace;
-    
+
     }
-  
+
     p {
       font-size: 16px;
       font-family: Monospace;
     }
-  
+
     .container {
-  position: relative;
-    
-}
+      position: relative;
 
-.image {
-  display: block;
-  width: 100%;
-  height: auto;
-}
+    }
 
-.overlay {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  height: 100%;
-  width: 100%;
-  opacity: 0;
-  transition: .5s ease;
-  background-color: #EEEEEE;
-}
+    .image {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
 
-.container:hover .overlay {
-  opacity: 1;
-}
+    .overlay {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 100%;
+      width: 100%;
+      opacity: 0;
+      transition: .5s ease;
+      background-color: #EEEEEE;
+    }
 
-.text {
-  color: black;
-  font-size: 20px;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  -ms-transform: translate(-50%, -50%);
-  text-align: center;
-}
+    .container:hover .overlay {
+      opacity: 1;
+    }
 
+    .text {
+      color: black;
+      font-size: 20px;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      -ms-transform: translate(-50%, -50%);
+      text-align: center;
+    }
   </style>
 
 </head>
+
 <body>
-<link href="https://fonts.googleapis.com/css?family=Rubik Mono One" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Rubik Mono One" rel="stylesheet" type="text/css">
 
 
-<div class="jumbotron text-center">
+  <div class="jumbotron text-center">
     <a href="../index.html">
-<img class="img-responsive center-block img-rounded" alt="WebBikez Online Shop" src="./Images/WebBikez_logo.jpg">
-</a>
-</div>
-<br>
-<br>
+      <img class="img-responsive center-block img-rounded" alt="WebBikez Online Shop" src="../Images/WebBikez_logo.jpg">
+    </a>
+  </div>
+  <br>
+  <br>
 
-<div class="container"></div>
-<div class="row">
-    <div class="container col-xs-3 col-sm-3 col-lg-3">       
-            
-                <img src="../Images/orangebike.JPG" alt="Orange Bike" class="image img-responsive img-rounded">
-                <div class="overlay">
-                    <div class="text">Orange Bike</div>
-                </div> 
-        
+  <div class="container"></div>
+  <div class="row">
+    <div class="container col-xs-3 col-sm-3 col-lg-3">
+
+      <img src="../Images/orangebike.JPG" alt="Orange Bike" class="image img-responsive img-rounded">
+      <div class="overlay">
+        <div class="text">Orange Bike</div>
+      </div>
+
     </div>
-    <div class="container col-xs-3 col-sm-3 col-lg-3">       
-            
-            <img src="../Images/oldbike.JPG" alt="Old Bike" class="image img-responsive img-rounded">
-            <div class="overlay">
-                <div class="text">Old Bike</div>
-            </div> 
-    
-</div>
-<div class="container col-xs-3 col-sm-3 col-lg-3">       
-            
-        <img src="../Images/blackbike.JPG" alt="Black Bike" class="image img-responsive img-rounded">
-        <div class="overlay">
-            <div class="text">Black Bike</div>
-        </div> 
+    <div class="container col-xs-3 col-sm-3 col-lg-3">
 
-</div>
-<div class="container col-xs-3 col-sm-3 col-lg-3">       
-            
-        <img src="../Images/bluebike.JPG" alt="Blue Bike" class="image img-responsive img-rounded">
-        <div class="overlay">
-            <div class="text">Blue Bike</div>
-        </div> 
+      <img src="../Images/oldbike.JPG" alt="Old Bike" class="image img-responsive img-rounded">
+      <div class="overlay">
+        <div class="text">Old Bike</div>
+      </div>
 
-</div>
-</div>
-<br>
-<br>
-<br>
-<div class="container"></div>
+    </div>
+    <div class="container col-xs-3 col-sm-3 col-lg-3">
 
-</div>
+      <img src="../Images/blackbike.JPG" alt="Black Bike" class="image img-responsive img-rounded">
+      <div class="overlay">
+        <div class="text">Black Bike</div>
+      </div>
+
+    </div>
+    <div class="container col-xs-3 col-sm-3 col-lg-3">
+
+      <img src="../Images/bluebike.JPG" alt="Blue Bike" class="image img-responsive img-rounded">
+      <div class="overlay">
+        <div class="text">Blue Bike</div>
+      </div>
+
+    </div>
+  </div>
+  <br>
+  <br>
+  <br>
+  <div class="container"></div>
+
+  </div>
 
 
-<br>
-<br>
-<div class="jumbotron text-center">
-    <a href="https://twitter.com/TheBicycleShop" class="twitter-follow-button" data-size="large" data-show-count="false"><button type="submit" class="btn btn-primary"><span class=""></span> Follow @TheBicycleShop</button></a><script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
-</div>
+  <br>
+  <br>
+  <div class="jumbotron text-center">
+    <a href="https://twitter.com/TheBicycleShop" class="twitter-follow-button" data-size="large" data-show-count="false">
+      <button type="submit" class="btn btn-primary">
+        <span class=""></span> Follow @TheBicycleShop</button>
+    </a>
+    <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+  </div>
 
-<br>
-<br>
+  <br>
+  <br>
 </body>
+
 </HTML>
