@@ -19,7 +19,7 @@ COPY nginx/global.conf /etc/nginx/conf.d/
 COPY nginx/nginx.conf /etc/nginx/nginx.conf 
 
 RUN mkdir temp && \
-    cd temp &&\
+    cd temp && \
     git clone https://github.com/ChrisGibson1982/webbikez-web.git && \
     mv /webbikez-web/* /var/www/html/website
 
