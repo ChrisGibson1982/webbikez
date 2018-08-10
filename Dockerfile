@@ -12,13 +12,18 @@ EXPOSE 80
 
 RUN yum -y install epel-release && \
     yum -y install nginx git logrotate && \
-    yum clean all && rm -rf /var/cache/yum
+    yum clean all && rm -rf /var/cache/yum 
 
 
 COPY nginx/global.conf /etc/nginx/conf.d/ 
 COPY nginx/nginx.conf /etc/nginx/nginx.conf 
 
-COPY Site/  /var/www/html/website
+RUN mkdir temp && \
+    cd temp &&\
+    git clone https://github.com/ChrisGibson1982/webbikez-web.git &&\
+    mv /webbikez-web/* /var/www/html/website
+
+# COPY Site/  /var/www/html/website
 
 RUN ln -sf /dev/stdout /var/log/nginx/access.log
 RUN ln -sf /dev/stderr /var/log/nginx/error.log
