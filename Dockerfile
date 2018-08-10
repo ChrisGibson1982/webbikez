@@ -6,7 +6,7 @@
 
 FROM centos:latest
 LABEL maintainer="cgfootman@hotmail.com" 
-LABEL version="1.0.9"
+LABEL version="1.1.0"
 
 EXPOSE 80
 
