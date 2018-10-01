@@ -1,0 +1,49 @@
+#
+#  docker build -t cgfootman/webbikeztest:0.0.1 -t cgfootman/webbikeztest:0.0.1  -f Dockerfile .
+#  docker run -d -p 8080:80 --name webbikez cgfootman/webbikeztest
+#  docker push cgfootman/webbikeztest
+
+FROM centos/s2i-core-centos7 as intermediate
+RUN yum -y install git
+
+RUN git clone https://github.com/ChrisGibson1982/webbikez-web.git
+
+FROM centos/s2i-core-centos7
+ENV WEBBIKEZ_VERSION=2.0.0
+ENV SUMMARY="WebBikez test Nginx website running on CentOS 7" \
+    DESCRIPTION="This is a website for a fictional bike manufacturer running on Nginx on  CentOs7.\
+    The Container should run as a user so can be used on  OpenShift"
+
+LABEL summary="$SUMMARY" \
+      description="$DESCRIPTION" \
+      io.k8s.description="$DESCRIPTION" \
+      io.k8s.display-name="Webbikez version $WEBBIKEZ_VERSION" \
+      io.openshift.expose-services="80:http" \
+      io.openshift.tags="nginx" \
+      name="cgfootman/webbikeztest" \
+      version="$WEBBIKEZ_VERSION" \
+      maintainer="cgfootman@hotmail.com" 
+
+EXPOSE 80
+
+RUN yum -y install epel-release && \
+    yum -y install nginx git logrotate && \
+    yum clean all && rm -rf /var/cache/yum 
+
+
+COPY nginx/global.conf /etc/nginx/conf.d/ 
+COPY nginx/nginx.conf /etc/nginx/nginx.conf 
+
+COPY --from=intermediate /webbikez-web /var/www/html/website
+
+RUN ln -sf /dev/stdout /var/log/nginx/access.log
+RUN ln -sf /dev/stderr /var/log/nginx/error.log
+
+USER 1001
+
+# Not using VOLUME statement since it's not working in OpenShift Online:
+# https://github.com/sclorg/httpd-container/issues/30
+# VOLUME ["${HTTPD_DATA_PATH}"]
+# VOLUME ["${HTTPD_LOG_PATH}"]
+
+CMD ["nginx", "-g", "daemon off;"]
