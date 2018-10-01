@@ -48,6 +48,8 @@ COPY --from=intermediate /webbikez-web /var/www/html/website
 
 COPY ./root/ /
 
+RUN ls ${APP_ROOT}
+
 RUN sed -i -f ${NGINX_APP_ROOT}/nginxconf.sed ${NGINX_CONF_PATH} && \
     chmod a+rwx ${NGINX_CONF_PATH} && \
     mkdir -p ${NGINX_APP_ROOT}/etc/nginx.d/ && \
