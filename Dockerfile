@@ -38,7 +38,7 @@ RUN yum install -y yum-utils gettext hostname && \
     INSTALL_PKGS="nss_wrapper bind-utils rh-nginx112 rh-nginx112-nginx" && \
     yum install -y --setopt=tsflags=nodocs $INSTALL_PKGS && \
     rpm -V $INSTALL_PKGS && \
-    yum clean all \
+    yum clean all && \
     rm -rf /var/cache/yum
 
 COPY --from=intermediate /webbikez-web /var/www/html/website
