@@ -38,12 +38,13 @@ RUN yum install -y yum-utils gettext hostname && \
     INSTALL_PKGS="nss_wrapper bind-utils rh-nginx112 rh-nginx112-nginx" && \
     yum install -y --setopt=tsflags=nodocs $INSTALL_PKGS && \
     rpm -V $INSTALL_PKGS && \
-    yum clean all
+    yum clean all \
+    rm -rf /var/cache/yum
 
 COPY --from=intermediate /webbikez-web /var/www/html/website
 
-RUN ln -sf /dev/stdout /var/log/nginx/access.log
-RUN ln -sf /dev/stderr /var/log/nginx/error.log
+# RUN ln -sf /dev/stdout /var/log/nginx/access.log
+# RUN ln -sf /dev/stderr /var/log/nginx/error.log
 
 RUN sed -i -f ${NGINX_APP_ROOT}/nginxconf.sed ${NGINX_CONF_PATH} && \
     chmod a+rwx ${NGINX_CONF_PATH} && \
