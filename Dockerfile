@@ -11,6 +11,8 @@ RUN git clone https://github.com/ChrisGibson1982/webbikez-web.git
 FROM centos:latest
 LABEL maintainer="cgfootman@hotmail.com" 
 LABEL version="1.1.0"
+RUN useradd --create-home -s /bin/bash user
+WORKDIR /home/user
 
 EXPOSE 80
 
