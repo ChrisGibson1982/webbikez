@@ -46,6 +46,8 @@ COPY --from=intermediate /webbikez-web /var/www/html/website
 # RUN ln -sf /dev/stdout /var/log/nginx/access.log
 # RUN ln -sf /dev/stderr /var/log/nginx/error.log
 
+COPY ./root/ /
+
 RUN sed -i -f ${NGINX_APP_ROOT}/nginxconf.sed ${NGINX_CONF_PATH} && \
     chmod a+rwx ${NGINX_CONF_PATH} && \
     mkdir -p ${NGINX_APP_ROOT}/etc/nginx.d/ && \
