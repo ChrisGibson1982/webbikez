@@ -46,7 +46,8 @@ COPY --from=intermediate /webbikez-web /var/www/html/website
 # RUN ln -sf /dev/stdout /var/log/nginx/access.log
 # RUN ln -sf /dev/stderr /var/log/nginx/error.log
 
-COPY ./root /
+COPY ./root/ /
+COPY .root/opt/app-root/nginxconf.sed /
 
 RUN ls /
 
