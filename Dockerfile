@@ -48,7 +48,7 @@ COPY --from=intermediate /webbikez-web /var/www/html/website
 
 COPY ./root/ /
 
-RUN cd ${APP_ROOT} && pwd
+RUN cd ${NGINX_APP_ROOT} && pwd && ls
 
 
 
