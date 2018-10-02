@@ -48,7 +48,7 @@ COPY --from=intermediate /webbikez-web /var/www/html/website
 
 COPY ./root/ /
 
-RUN find . nginxconf.sed
+RUN PWD
 
 RUN ls ${APP_ROOT}/root
 
