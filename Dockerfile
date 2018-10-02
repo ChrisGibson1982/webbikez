@@ -48,7 +48,7 @@ COPY --from=intermediate /webbikez-web /var/www/html/website
 
 COPY ./root/ /
 
-RUN PWD
+RUN pwd
 
 RUN ls ${APP_ROOT}/root
 
