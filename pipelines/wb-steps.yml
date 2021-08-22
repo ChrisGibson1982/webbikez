@@ -1,0 +1,59 @@
+steps:
+
+- checkout: self
+
+- task: AzureResourceManagerTemplateDeployment@3
+  inputs:
+    deploymentScope: 'Resource Group'
+    azureResourceManagerConnection: '$(serviceConnection)'
+    action: 'Create Or Update Resource Group'
+    resourceGroupName: '$(storageAccount_RGname)'
+    location: '$(location)'
+    templateLocation: 'Linked artifact'
+    csmFile: '$(System.DefaultWorkingDirectory)/arm-templates/ml-tf-state-template.json'
+    overrideParameters: ' -storageAccount_name "$(storageAccount_name)" -storageAccountContainer_name "$(storageAccountContainer_name)"'
+    deploymentMode: 'Incremental'
+    deploymentName: 'storageAccountDeploy'
+
+- task: TerraformInstaller@0
+  displayName: 'install'
+  inputs:
+    #terraformVersion: '1.0.4'
+     terraformVersion: '0.12.31'
+
+- task: TerraformTaskV1@0
+  displayName: 'validate'
+  inputs:
+    provider: 'azurerm'
+    command: 'validate'
+
+- task: TerraformTaskV1@0
+  displayName: 'init'
+  inputs:
+    provider: 'azurerm'
+    command: 'init'
+    workingDirectory: '$(System.DefaultWorkingDirectory)/tf'
+    backendServiceArm: '$(serviceConnection)'
+    backendAzureRmResourceGroupName: '$(storageAccount_RGname)'
+    backendAzureRmStorageAccountName: '$(storageAccount_name)'
+    backendAzureRmContainerName: '$(storageAccountContainer_name)'
+    backendAzureRmKey: 'terraform.tfstate'
+    
+- task: TerraformTaskV1@0
+  displayName: 'plan'
+  inputs:
+    provider: 'azurerm'
+    command: 'plan'
+    workingDirectory: '$(System.DefaultWorkingDirectory)/tf'
+    environmentServiceNameAzureRM: '$(serviceConnection)'
+    commandOptions: '-var "prefix=$(prefix)"'
+    
+
+- task: TerraformTaskV1@0
+  displayName: 'apply'
+  inputs:
+    provider: 'azurerm'
+    command: 'apply'
+    workingDirectory: '$(System.DefaultWorkingDirectory)/tf'
+    environmentServiceNameAzureRM: '$(serviceConnection)'
+    commandOptions: '-var "prefix=$(prefix)"'

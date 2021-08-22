@@ -1,0 +1,16 @@
+variables:
+  - name: location
+    value: 'northeurope'
+
+  - name: serviceConnection
+    value: 'PAYG'
+
+  - name: storageAccount_name
+    value: '$(prefix)sto001'
+
+  - name: storageAccountContainer_name
+    value: 'mlstate'
+
+  - name: storageAccount_RGname
+    value: '$(prefix)rg001'
+  
