@@ -9,7 +9,7 @@ variables:
     value: '$(prefix)sto001'
 
   - name: storageAccountContainer_name
-    value: 'mlstate'
+    value: 'wbstate'
 
   - name: storageAccount_RGname
     value: '$(prefix)rg001'
