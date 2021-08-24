@@ -58,10 +58,21 @@ steps:
     environmentServiceNameAzureRM: '$(serviceConnection)'
     commandOptions: '-var "prefix=$(prefix)"'
 
+# - task: Docker@2
+#   displayName: Build an image
+#   inputs:
+#     command: build
+#     dockerfile: '$(Build.SourcesDirectory)/Dockerfile'
+#     tags: |
+#       $(prefix)acr001.azurecr.io/webapp:v1
+#       $(tag)
+
 - task: Docker@2
   displayName: Build an image
   inputs:
-    command: build
-    dockerfile: '$(Build.SourcesDirectory)/Dockerfile'
+    repository: 'Name'
+    command: 'buildAndPush'
+    Dockerfile: '$(Build.SourcesDirectory)/Dockerfile'
     tags: |
-      $(tag)
+        '$(tag)'
+        '$(prefix)acr001.azurecr.io/webapp:v1'
