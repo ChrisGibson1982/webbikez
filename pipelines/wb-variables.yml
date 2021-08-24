@@ -13,4 +13,7 @@ variables:
 
   - name: storageAccount_RGname
     value: '$(prefix)rg001'
+
+  - name:  tag
+    value: '$(Build.BuildId)'
   

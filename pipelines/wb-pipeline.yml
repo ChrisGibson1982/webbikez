@@ -16,7 +16,7 @@ stages:
     timeoutInMinutes: 120
     displayName:  'wb Deploy DEV'
     pool: 
-      vmImage: windows-latest
+      vmImage: ubuntu-latest
     strategy: 
       runOnce:
         deploy:
@@ -34,7 +34,7 @@ stages:
     timeoutInMinutes: 120
     displayName:  'wb Deploy QA'
     pool: 
-      vmImage: windows-latest
+      vmImage: ubuntu-latest
     strategy: 
       runOnce:
         deploy:
@@ -52,7 +52,7 @@ stages:
     timeoutInMinutes: 120
     displayName:  'wb Deploy Prod'
     pool: 
-      vmImage: windows-latest
+      vmImage: ubuntu-latest
     strategy: 
       runOnce:
         deploy:
