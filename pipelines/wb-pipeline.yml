@@ -3,7 +3,11 @@ trigger:
    include:
      - master
 
+variables:
+  - template: wb-variables.yml
+
 stages:
+
 
 - stage: wbDeployDev
   displayName: 'DEV Stage'
@@ -20,9 +24,7 @@ stages:
           steps:
             - template:  'wb-steps.yml'
 
-    variables:
-      - template: wb-variables.yml
-
+      variables:
       - name: prefix
         value:  'wbdevne'
 
@@ -52,8 +54,7 @@ stages:
 
       - name: dockerRegistryServiceConnectionName
         value: '$(prefix)acr001'
-        
-      - template: wb-variables.yml
+
 
 - stage: wbDeployProd
   displayName: 'Prod Stage'
@@ -76,5 +77,4 @@ stages:
 
       - name: dockerRegistryServiceConnectionName
         value: '$(prefix)acr001'
-        
-      - template: wb-variables.yml
+
