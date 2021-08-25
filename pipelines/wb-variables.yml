@@ -16,4 +16,6 @@ variables:
 
   - name:  tag
     value: '$(Build.BuildId)'
-  
+
+  - name:  tag
+    value: '$(dockerRegistryServiceConnection)'
