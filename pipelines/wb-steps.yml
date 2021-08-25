@@ -73,5 +73,6 @@ steps:
     repository:  'webbikez'
     command: 'buildAndPush'
     Dockerfile: '$(Build.SourcesDirectory)/Dockerfile'
-    containerRegistry: 'wbdevneacr001'
+    #containerRegistry: 'wbdevneacr001'
+    containerRegistry: $(dockerRegistry)
     tags: '$(Build.BuildId)'
