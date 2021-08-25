@@ -70,7 +70,8 @@ steps:
 - task: Docker@2
   displayName: Build an image
   inputs:
-    repository:  '$(prefix)acr001'
+    repository:  'webbikez'
     command: 'buildAndPush'
     Dockerfile: '$(Build.SourcesDirectory)/Dockerfile'
+    containerRegistry: '$(prefix)acr001'
     tags: '$(Build.BuildId)'
