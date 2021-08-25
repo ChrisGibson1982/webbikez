@@ -25,6 +25,7 @@ stages:
 
     variables:
       prefix:  'wbdevne'
+      dockerRegistryServiceConnectionName: 'wbdevneacr001'
 
 - stage: wbDeployQA
   displayName: 'QA Stage'
