@@ -1,6 +1,3 @@
-variables:
-      dockerRegistryServiceConnectionName: '$(prefix)acr001'
-
 steps:
 - checkout: self
 
