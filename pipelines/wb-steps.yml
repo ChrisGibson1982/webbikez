@@ -70,7 +70,7 @@ steps:
 - task: Docker@2
   displayName: Build an image
   inputs:
-    repository: 'Name'
+    repository: '$(prefix)acr001'
     command: 'buildAndPush'
     Dockerfile: '$(Build.SourcesDirectory)/Dockerfile'
     tags: |
