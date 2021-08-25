@@ -25,6 +25,7 @@ stages:
 
     variables:
       prefix:  'wbdevne'
+      dockerRegistry: 'wbdevneacr001'
 
 - stage: wbDeployQA
   displayName: 'QA Stage'
@@ -43,6 +44,7 @@ stages:
 
     variables:
       prefix:  'wbqane'
+      dockerRegistry: 'wbdqaneacr001'
 
 - stage: wbDeployProd
   displayName: 'Prod Stage'
@@ -61,3 +63,4 @@ stages:
 
     variables:
       prefix:  'wbprodne'
+      dockerRegistry: 'wbprodneacr001'
