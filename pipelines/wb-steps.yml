@@ -1,5 +1,7 @@
-steps:
+variables:
+      dockerRegistryServiceConnectionName: '$(prefix)acr001'
 
+steps:
 - checkout: self
 
 - task: AzureResourceManagerTemplateDeployment@3
