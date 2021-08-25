@@ -74,5 +74,5 @@ steps:
     command: 'buildAndPush'
     Dockerfile: '$(Build.SourcesDirectory)/Dockerfile'
     tags: |
-        '$(tag)'
         '$(prefix)acr001.azurecr.io/webapp:v1'
+#'$(tag)'
