@@ -3,16 +3,13 @@ trigger:
    include:
      - master
 
-variables:
-- template: wb-variables.yml
-
 stages:
 
 - stage: wbDeployDev
   displayName: 'DEV Stage'
   jobs:
   - deployment: wbDeployDEV
-    environment: DEV
+    environment: DEV      
     timeoutInMinutes: 120
     displayName:  'wb Deploy DEV'
     pool: 
@@ -24,8 +21,13 @@ stages:
             - template:  'wb-steps.yml'
 
     variables:
-      prefix:  'wbdevne'
-      dockerRegistryServiceConnectionName: '$(prefix)acr001'
+      - name: prefix
+        value:  'wbdevne'
+
+      - name: dockerRegistryServiceConnectionName
+        value: '$(prefix)acr001'
+
+      - template: wb-variables.yml
 
 - stage: wbDeployQA
   displayName: 'QA Stage'
@@ -43,7 +45,13 @@ stages:
             - template:  'wb-steps.yml'
 
     variables:
-      prefix:  'wbqane'
+      - name: prefix
+        value:  'wbqane'
+
+      - name: dockerRegistryServiceConnectionName
+        value: '$(prefix)acr001'
+        
+      - template: wb-variables.yml
 
 - stage: wbDeployProd
   displayName: 'Prod Stage'
@@ -61,4 +69,10 @@ stages:
             - template:  'wb-steps.yml'
 
     variables:
-      prefix:  'wbprodne'
+      - name: prefix
+        value:  'wbprodne'
+
+      - name: dockerRegistryServiceConnectionName
+        value: '$(prefix)acr001'
+        
+      - template: wb-variables.yml
