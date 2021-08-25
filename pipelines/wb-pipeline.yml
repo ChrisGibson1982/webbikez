@@ -21,13 +21,15 @@ stages:
             - template:  'wb-steps.yml'
 
     variables:
+      - template: wb-variables.yml
+
       - name: prefix
         value:  'wbdevne'
 
       - name: dockerRegistryServiceConnectionName
         value: '$(prefix)acr001'
 
-      - template: wb-variables.yml
+
 
 - stage: wbDeployQA
   displayName: 'QA Stage'
