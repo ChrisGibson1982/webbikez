@@ -28,8 +28,8 @@ stages:
       - name: prefix
         value:  'wbdevne'
 
-      - name: dockerRegistryServiceConnectionName
-        value: '$(prefix)acr001'
+      # - name: dockerRegistryServiceConnectionName
+      #   value: '$(prefix)acr001'
 
 
 
