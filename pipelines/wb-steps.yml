@@ -65,7 +65,6 @@ steps:
       repository:  'webbikez'
       command: 'buildAndPush'
       Dockerfile: '$(Build.SourcesDirectory)/Dockerfile'
-      #containerRegistry: 'wbdevneacr001'
       containerRegistry: $(dev_dockerRegistry)
       tags: '$(Build.BuildId)'
 
@@ -76,7 +75,6 @@ steps:
 #       repository:  'webbikez'
 #       command: 'buildAndPush'
 #       Dockerfile: '$(Build.SourcesDirectory)/Dockerfile'
-#       #containerRegistry: 'wbdevneacr001'
 #       containerRegistry: $(qa_dockerRegistry)
 #       tags: '$(Build.BuildId)'
 
@@ -87,6 +85,5 @@ steps:
 #       repository:  'webbikez'
 #       command: 'buildAndPush'
 #       Dockerfile: '$(Build.SourcesDirectory)/Dockerfile'
-#       #containerRegistry: 'wbdevneacr001'
 #       containerRegistry: $(prd_dockerRegistry)
 #       tags: '$(Build.BuildId)'
