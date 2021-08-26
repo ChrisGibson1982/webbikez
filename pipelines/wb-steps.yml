@@ -26,38 +26,36 @@ steps:
     provider: 'azurerm'
     command: 'validate'
 
-- ${{ if eq(parameters.deployEnvironment, 'dev') }}:    
-  - task: TerraformTaskV1@0
-    displayName: 'init'
-    inputs:
-      provider: 'azurerm'
-      command: 'init'
-      workingDirectory: '$(System.DefaultWorkingDirectory)/tf/registry'
-      backendServiceArm: '$(serviceConnection)'
-      backendAzureRmResourceGroupName: '$(storageAccount_RGname)'
-      backendAzureRmStorageAccountName: '$(storageAccount_name)'
-      backendAzureRmContainerName: '$(storageAccountContainer_name)'
-      backendAzureRmKey: 'terraform.tfstate'
-    
-- ${{ if eq(parameters.deployEnvironment, 'dev') }}:    
-  - task: TerraformTaskV1@0
-    displayName: 'plan'
-    inputs:
-      provider: 'azurerm'
-      command: 'plan'
-      workingDirectory: '$(System.DefaultWorkingDirectory)/tf/registry'
-      environmentServiceNameAzureRM: '$(serviceConnection)'
-      commandOptions: '-var "prefix=$(prefix)"'
-    
-- ${{ if eq(parameters.deployEnvironment, 'dev') }}:
-  - task: TerraformTaskV1@0
-    displayName: 'apply'
-    inputs:
-      provider: 'azurerm'
-      command: 'apply'
-      workingDirectory: '$(System.DefaultWorkingDirectory)/tf/registry'
-      environmentServiceNameAzureRM: '$(serviceConnection)'
-      commandOptions: '-var "prefix=$(prefix)"'
+- task: TerraformTaskV1@0
+  displayName: 'init'
+  inputs:
+    provider: 'azurerm'
+    command: 'init'
+    workingDirectory: '$(System.DefaultWorkingDirectory)/tf/registry'
+    backendServiceArm: '$(serviceConnection)'
+    backendAzureRmResourceGroupName: '$(storageAccount_RGname)'
+    backendAzureRmStorageAccountName: '$(storageAccount_name)'
+    backendAzureRmContainerName: '$(storageAccountContainer_name)'
+    backendAzureRmKey: 'terraform.tfstate'
+  
+- task: TerraformTaskV1@0
+  displayName: 'plan'
+  inputs:
+    provider: 'azurerm'
+    command: 'plan'
+    workingDirectory: '$(System.DefaultWorkingDirectory)/tf/registry'
+    environmentServiceNameAzureRM: '$(serviceConnection)'
+    commandOptions: '-var "prefix=$(prefix)"'
+  
+
+- task: TerraformTaskV1@0
+  displayName: 'apply'
+  inputs:
+    provider: 'azurerm'
+    command: 'apply'
+    workingDirectory: '$(System.DefaultWorkingDirectory)/tf/registry'
+    environmentServiceNameAzureRM: '$(serviceConnection)'
+    commandOptions: '-var "prefix=$(prefix)"'
 
 
 - ${{ if eq(parameters.deployEnvironment, 'dev') }}:
@@ -68,5 +66,27 @@ steps:
       command: 'buildAndPush'
       Dockerfile: '$(Build.SourcesDirectory)/Dockerfile'
       #containerRegistry: 'wbdevneacr001'
-      containerRegistry: $(dockerRegistryServiceConnectionName)
+      containerRegistry: $(dev_dockerRegistry)
       tags: '$(Build.BuildId)'
+
+# - ${{ if eq(parameters.deployEnvironment, 'qa') }}:
+#   - task: Docker@2
+#     displayName: 'Build an image -tag $(Build.BuildId)'
+#     inputs:
+#       repository:  'webbikez'
+#       command: 'buildAndPush'
+#       Dockerfile: '$(Build.SourcesDirectory)/Dockerfile'
+#       #containerRegistry: 'wbdevneacr001'
+#       containerRegistry: $(qa_dockerRegistry)
+#       tags: '$(Build.BuildId)'
+
+# - ${{ if eq(parameters.deployEnvironment, 'prd') }}:
+#   - task: Docker@2
+#     displayName: 'Build an image -tag $(Build.BuildId)'
+#     inputs:
+#       repository:  'webbikez'
+#       command: 'buildAndPush'
+#       Dockerfile: '$(Build.SourcesDirectory)/Dockerfile'
+#       #containerRegistry: 'wbdevneacr001'
+#       containerRegistry: $(prd_dockerRegistry)
+#       tags: '$(Build.BuildId)'

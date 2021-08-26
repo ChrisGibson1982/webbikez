@@ -14,5 +14,11 @@ variables:
   - name: storageAccount_RGname
     value: '$(prefix)rg001'
  
-  - name: dockerRegistryServiceConnectionName
+  - name: dev_dockerRegistry
     value: 'wbdevneacr001'
+
+  - name: qa_dockerRegistry
+    value: 'wbqaneacr001'
+
+  - name: prod_dockerRegistry
+    value: 'wbprodvneacr001'
