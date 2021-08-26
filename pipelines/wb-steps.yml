@@ -62,7 +62,7 @@ steps:
 
 - ${{ if eq(parameters.deployEnvironment, 'dev') }}:
   - task: Docker@2
-    displayName: Build an image
+    displayName: 'Build an image -tag $(Build.BuildId)'
     inputs:
       repository:  'webbikez'
       command: 'buildAndPush'
