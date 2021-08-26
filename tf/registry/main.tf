@@ -16,7 +16,7 @@ data "azurerm_client_config" "current" {}
 
 # Create ACR
  resource "azurerm_resource_group" "rg" {
-   name     = "${var.prefix}rg011"
+   name     = "${var.prefix}rg002"
    location = "northeurope"
  }
 

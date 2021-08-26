@@ -26,36 +26,38 @@ steps:
     provider: 'azurerm'
     command: 'validate'
 
-- task: TerraformTaskV1@0
-  displayName: 'init'
-  inputs:
-    provider: 'azurerm'
-    command: 'init'
-    workingDirectory: '$(System.DefaultWorkingDirectory)/tf'
-    backendServiceArm: '$(serviceConnection)'
-    backendAzureRmResourceGroupName: '$(storageAccount_RGname)'
-    backendAzureRmStorageAccountName: '$(storageAccount_name)'
-    backendAzureRmContainerName: '$(storageAccountContainer_name)'
-    backendAzureRmKey: 'terraform.tfstate'
+- ${{ if eq(parameters.deployEnvironment, 'dev') }}:    
+  - task: TerraformTaskV1@0
+    displayName: 'init'
+    inputs:
+      provider: 'azurerm'
+      command: 'init'
+      workingDirectory: '$(System.DefaultWorkingDirectory)/tf/registry'
+      backendServiceArm: '$(serviceConnection)'
+      backendAzureRmResourceGroupName: '$(storageAccount_RGname)'
+      backendAzureRmStorageAccountName: '$(storageAccount_name)'
+      backendAzureRmContainerName: '$(storageAccountContainer_name)'
+      backendAzureRmKey: 'terraform.tfstate'
     
-- task: TerraformTaskV1@0
-  displayName: 'plan'
-  inputs:
-    provider: 'azurerm'
-    command: 'plan'
-    workingDirectory: '$(System.DefaultWorkingDirectory)/tf'
-    environmentServiceNameAzureRM: '$(serviceConnection)'
-    commandOptions: '-var "prefix=$(prefix)"'
+- ${{ if eq(parameters.deployEnvironment, 'dev') }}:    
+  - task: TerraformTaskV1@0
+    displayName: 'plan'
+    inputs:
+      provider: 'azurerm'
+      command: 'plan'
+      workingDirectory: '$(System.DefaultWorkingDirectory)/tf/registry'
+      environmentServiceNameAzureRM: '$(serviceConnection)'
+      commandOptions: '-var "prefix=$(prefix)"'
     
-
-- task: TerraformTaskV1@0
-  displayName: 'apply'
-  inputs:
-    provider: 'azurerm'
-    command: 'apply'
-    workingDirectory: '$(System.DefaultWorkingDirectory)/tf'
-    environmentServiceNameAzureRM: '$(serviceConnection)'
-    commandOptions: '-var "prefix=$(prefix)"'
+- ${{ if eq(parameters.deployEnvironment, 'dev') }}:
+  - task: TerraformTaskV1@0
+    displayName: 'apply'
+    inputs:
+      provider: 'azurerm'
+      command: 'apply'
+      workingDirectory: '$(System.DefaultWorkingDirectory)/tf/registry'
+      environmentServiceNameAzureRM: '$(serviceConnection)'
+      commandOptions: '-var "prefix=$(prefix)"'
 
 
 - ${{ if eq(parameters.deployEnvironment, 'dev') }}:
