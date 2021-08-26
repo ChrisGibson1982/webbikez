@@ -66,10 +66,10 @@ steps:
       command: 'buildAndPush'
       Dockerfile: '$(Build.SourcesDirectory)/Dockerfile'
       #containerRegistry: $(dev_dockerRegistry)
-      containerRegistry: 'wbdevneacr001TEST6'
+      containerRegistry: 'wbdevneacr001TEST7'
       tags: '$(Build.BuildId)'
 
-      
+
 # - ${{ if eq(parameters.deployEnvironment, 'qa') }}:
 #   - task: Docker@2
 #     displayName: 'Build an image -tag $(Build.BuildId)'
