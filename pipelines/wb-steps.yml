@@ -58,7 +58,7 @@ steps:
     commandOptions: '-var "prefix=$(prefix)"'
 
 
-- ${{ if eq(parameters.prefix, 'wbqane') }}:
+- ${{ if eq(parameters. deployEnvironment, 'dev') }}:
   - task: Docker@2
     displayName: Build an image
     inputs:
