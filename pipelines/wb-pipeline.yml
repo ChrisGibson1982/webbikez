@@ -24,9 +24,9 @@ stages:
           steps:
             - template:  'wb-steps.yml'
 
-      variables:
-      - name: prefix
-        value:  'wbdevne'
+  variables:
+    - name: prefix
+      value:  'wbdevne'
 
 
 
