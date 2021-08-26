@@ -28,9 +28,6 @@ stages:
       - name: prefix
         value:  'wbdevne'
 
-      # - name: dockerRegistryServiceConnectionName
-      #   value: '$(prefix)acr001'
-
 
 
 - stage: wbDeployQA
@@ -52,9 +49,6 @@ stages:
       - name: prefix
         value:  'wbqane'
 
-      - name: dockerRegistryServiceConnectionName
-        value: '$(prefix)acr001'
-
 
 - stage: wbDeployProd
   displayName: 'Prod Stage'
@@ -70,11 +64,11 @@ stages:
         deploy:
           steps:
             - template:  'wb-steps.yml'
+              parameters:
+                  deployEnvironment: 'dev'
 
     variables:
       - name: prefix
         value:  'wbprodne'
 
-      - name: dockerRegistryServiceConnectionName
-        value: '$(prefix)acr001'
 

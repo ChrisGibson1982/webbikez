@@ -57,12 +57,14 @@ steps:
     environmentServiceNameAzureRM: '$(serviceConnection)'
     commandOptions: '-var "prefix=$(prefix)"'
 
-- task: Docker@2
-  displayName: Build an image
-  inputs:
-    repository:  'webbikez'
-    command: 'buildAndPush'
-    Dockerfile: '$(Build.SourcesDirectory)/Dockerfile'
-    #containerRegistry: 'wbdevneacr001'
-    containerRegistry: $(dockerRegistryServiceConnectionName)
-    tags: '$(Build.BuildId)'
+
+- ${{ if eq(parameters.prefix, 'wbqane') }}:
+  - task: Docker@2
+    displayName: Build an image
+    inputs:
+      repository:  'webbikez'
+      command: 'buildAndPush'
+      Dockerfile: '$(Build.SourcesDirectory)/Dockerfile'
+      #containerRegistry: 'wbdevneacr001'
+      containerRegistry: $(dockerRegistryServiceConnectionName)
+      tags: '$(Build.BuildId)'

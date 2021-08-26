@@ -15,4 +15,4 @@ variables:
     value: '$(prefix)rg001'
  
   - name: dockerRegistryServiceConnectionName
-    value: '$(prefix)acr001'
+    value: 'wbprodneacr001'
