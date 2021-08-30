@@ -88,7 +88,7 @@
                 "publicAccess": "None"
             }
         },
-               {
+        {
             "type": "Microsoft.ContainerRegistry/registries",
             "apiVersion": "2021-06-01-preview",
             "name": "[parameters('registries_name')]",
@@ -126,6 +126,11 @@
             }
         }
     ],
-    "outputs": {}
+    "outputs": {
+        "acrLoginServer": {
+            "type": "string",
+            "value": "[reference(resourceId('Microsoft.ContainerRegistry/registries', parameters('registries_name'))).loginServer]"
+        }
+    }
 
 }
