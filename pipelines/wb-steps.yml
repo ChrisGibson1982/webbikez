@@ -12,7 +12,16 @@ steps:
     csmFile: '$(System.DefaultWorkingDirectory)/arm/ml-template.json'
     overrideParameters: ' -storageAccount_name "$(storageAccount_name)" -storageAccountContainer_name "$(storageAccountContainer_name)" -registries_name "$(prefix)acr001"'
     deploymentMode: 'Incremental'
-    deploymentName: 'storageAccountDeploy'
+    deploymentName: 'coreInfraDeploy'
+
+
+- task: ARM Outputs@6
+  inputs:
+    ConnectedServiceNameSelector: 'ConnectedServiceNameARM'
+    ConnectedServiceNameARM: 'PAYG'
+    resourceGroupName: '$(storageAccount_RGname)'
+    prefix: 'wb'
+    whenLastDeploymentIsFailed: 'fail'
 
 - task: TerraformInstaller@0
   displayName: 'install'
@@ -65,8 +74,8 @@ steps:
       repository:  'webbikez'
       command: 'buildAndPush'
       Dockerfile: '$(Build.SourcesDirectory)/Dockerfile'
-      #containerRegistry: $(dev_dockerRegistry)
-      containerRegistry: 'wbdevneacr001'
+      containerRegistry: $(wbloginServer)
+      #containerRegistry: 'wbdevneacr001'
       tags: '$(Build.BuildId)'
 
 
