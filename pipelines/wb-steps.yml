@@ -10,7 +10,7 @@ steps:
     location: '$(location)'
     templateLocation: 'Linked artifact'
     csmFile: '$(System.DefaultWorkingDirectory)/arm/ml-template.json'
-    overrideParameters: ' -storageAccount_name "$(storageAccount_name)" -storageAccountContainer_name "$(storageAccountContainer_name)" -registries_name "wb${{deployEnvironment}}neacr001"'
+    overrideParameters: ' -storageAccount_name "$(storageAccount_name)" -storageAccountContainer_name "$(storageAccountContainer_name)" -registries_name "$(prefix)acr001"'
     deploymentMode: 'Incremental'
     deploymentName: 'storageAccountDeploy'
 
