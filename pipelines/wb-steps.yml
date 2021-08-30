@@ -10,7 +10,7 @@ steps:
     location: '$(location)'
     templateLocation: 'Linked artifact'
     csmFile: '$(System.DefaultWorkingDirectory)/arm/ml-template.json'
-    overrideParameters: ' -storageAccount_name "$(storageAccount_name)" -storageAccountContainer_name "$(storageAccountContainer_name)"'
+    overrideParameters: ' -storageAccount_name "$(storageAccount_name)" -storageAccountContainer_name "$(storageAccountContainer_name)" -registries_name "wb${{deployEnvironment}}neacr001"'
     deploymentMode: 'Incremental'
     deploymentName: 'storageAccountDeploy'
 
@@ -48,14 +48,14 @@ steps:
     commandOptions: '-var "prefix=$(prefix)"'
   
 
-- task: TerraformTaskV1@0
-  displayName: 'apply'
-  inputs:
-    provider: 'azurerm'
-    command: 'apply'
-    workingDirectory: '$(System.DefaultWorkingDirectory)/tf/registry'
-    environmentServiceNameAzureRM: '$(serviceConnection)'
-    commandOptions: '-var "prefix=$(prefix)"'
+# - task: TerraformTaskV1@0
+#   displayName: 'apply'
+#   inputs:
+#     provider: 'azurerm'
+#     command: 'apply'
+#     workingDirectory: '$(System.DefaultWorkingDirectory)/tf/registry'
+#     environmentServiceNameAzureRM: '$(serviceConnection)'
+#     commandOptions: '-var "prefix=$(prefix)"'
 
 
 - ${{ if eq(parameters.deployEnvironment, 'dev') }}:
